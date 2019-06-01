@@ -10,6 +10,7 @@ public class ArrowColorifyier : MonoBehaviour {
     }
 
     public GameObject arrowContainer;
+    public GameObject circlesContainer;
 
     public Text textLambda;
 
@@ -17,6 +18,9 @@ public class ArrowColorifyier : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        Debug.Assert(arrowContainer, "arrowContainer hasn't been init");
+        Debug.Assert(circlesContainer, "circlesContainer hasn't been init");
 
         paramsCache = new ColorButtonParams[transform.childCount];
 
@@ -58,5 +62,11 @@ public class ArrowColorifyier : MonoBehaviour {
 
         if (textLambda)
             textLambda.text = "" + colorButtonParams.lambda;
+
+        if(circlesContainer)
+        {
+            SpriteRenderer spriteRenderer = circlesContainer.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = colorButtonParams.color;
+        }
     }
 }
