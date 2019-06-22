@@ -7,6 +7,7 @@ public class ArrowColorifyier : MonoBehaviour {
     {
         public Color color;
         public int lambda { get; set; }
+        public float circlesScale { get; set; }
     }
 
     public GameObject arrowContainer;
@@ -32,6 +33,7 @@ public class ArrowColorifyier : MonoBehaviour {
 
             colorButtonParams.color = button.GetComponent<Image>().color;
             colorButtonParams.lambda = button.GetComponent<ArrowColorParams>().lambdaValue;
+            colorButtonParams.circlesScale = button.GetComponent<ArrowColorParams>().circlesScale;
 
             button.onClick.AddListener(() => ColorArrows(colorButtonParams));
             paramsCache[i] = colorButtonParams;
@@ -67,6 +69,8 @@ public class ArrowColorifyier : MonoBehaviour {
         {
             SpriteRenderer spriteRenderer = circlesContainer.GetComponent<SpriteRenderer>();
             spriteRenderer.color = colorButtonParams.color;
+
+            circlesContainer.transform.localScale = new Vector3(colorButtonParams.circlesScale, colorButtonParams.circlesScale, 1f);
         }
     }
 }

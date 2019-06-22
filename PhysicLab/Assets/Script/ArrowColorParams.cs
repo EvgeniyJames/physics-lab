@@ -5,5 +5,5 @@ using UnityEngine;
 public class ArrowColorParams : MonoBehaviour {
 
     public int lambdaValue;
-
+    public float circlesScale;
 }

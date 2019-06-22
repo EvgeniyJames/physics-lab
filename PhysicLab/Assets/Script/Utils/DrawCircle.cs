@@ -8,11 +8,23 @@ public class DrawCircle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.DrawCircle(radius, lineWidth);
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void Init()
+    {
+        gameObject.DrawCircle(radius, lineWidth);
+    }
+
+    public static void AddToObject(GameObject where, float radius, float lineWidth)
+    {
+        DrawCircle drawCircle = where.AddComponent<DrawCircle>();
+        drawCircle.radius = radius;
+        drawCircle.lineWidth = lineWidth;
+        drawCircle.Init();
     }
 }

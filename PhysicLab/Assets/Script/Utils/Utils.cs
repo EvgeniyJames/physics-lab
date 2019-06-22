@@ -10,6 +10,7 @@ public static class GameObjectEx
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
         line.positionCount = segments + 1;
+        line.material.color = Color.blue;
 
         var pointCount = segments + 1; // add extra point to make startpoint and endpoint the same to close the circle
         var points = new Vector3[pointCount];
