@@ -11,12 +11,6 @@ public class NewtonCirclesDrawer : MonoBehaviour
     public float lambda;
     public float radius;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ReinitCircleCanvas(760, 100, Color.blue);
-    }
-
     public void ReinitCircleCanvas()
     {
         ClearFromCirlces();
@@ -63,6 +57,8 @@ public class NewtonCirclesDrawer : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
+            Destroy(child.gameObject.GetComponent<LineRenderer>().material);
+
             Destroy(child.gameObject);
         }
     }

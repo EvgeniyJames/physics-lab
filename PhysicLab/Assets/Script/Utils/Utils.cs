@@ -4,13 +4,16 @@ public static class GameObjectEx
 {
     public static void DrawCircle(this GameObject container, float radius, float lineWidth, Color color)
     {
-        var segments = 360;
+        var segments = 25;
         var line = container.AddComponent<LineRenderer>();
         line.useWorldSpace = false;
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
         line.positionCount = segments + 1;
-        line.material.color = color;
+
+        line.material = new Material(Shader.Find("Mobile/Particles/Additive"));
+        line.startColor = color;
+        line.endColor = color;
 
         var pointCount = segments + 1; // add extra point to make startpoint and endpoint the same to close the circle
         var points = new Vector3[pointCount];
