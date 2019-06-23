@@ -14,6 +14,7 @@ public class LenseScaleController : MonoBehaviour {
     private StepIncreaseCoordinator StepIncreaseCoordinator;
     private StepDecreaseCoordinator StepDecreaseCoordinator;
 
+    public NewtonCirclesDrawer NewtonCirclesDrawer;
 
     public Text textWidget;
     private int curveRadius = 75;
@@ -21,14 +22,15 @@ public class LenseScaleController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        Debug.Assert(arrowsContainer, "LenseScaleController of " + name + " has no arrowsContainer");
+        Debug.Assert(NewtonCirclesDrawer, "NewtonCirclesDrawer of " + name + " is lost");
+
+        Debug.Assert(arrowsContainer, "LenseScaleController of " + name + " is lost");
         if (arrowsContainer)
         {
             StepIncreaseCoordinator = arrowsContainer.GetComponent<StepIncreaseCoordinator>();
             StepDecreaseCoordinator = arrowsContainer.GetComponent<StepDecreaseCoordinator>();
         }
-        UpdateTextWidget();
-
+        Notify();
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class LenseScaleController : MonoBehaviour {
         StepDecreaseCoordinator.MakeStep();
 
         curveRadius += 5;
-        UpdateTextWidget();
+        Notify();
     }
 
     public void Decrease()
@@ -61,12 +63,27 @@ public class LenseScaleController : MonoBehaviour {
         StepIncreaseCoordinator.MakeStep();
 
         curveRadius -= 5;
+        Notify();
+    }
+
+    private void Notify()
+    {
         UpdateTextWidget();
+        NotifyNewtonController();
     }
 
     private void UpdateTextWidget()
     {
         if (textWidget)
             textWidget.text = "" + curveRadius;
+    }
+
+    private void NotifyNewtonController()
+    {
+        if (NewtonCirclesDrawer)
+        {
+            NewtonCirclesDrawer.radius = curveRadius;
+            NewtonCirclesDrawer.ReinitCircleCanvas();
+        }
     }
 }

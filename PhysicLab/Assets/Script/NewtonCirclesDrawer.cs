@@ -7,19 +7,56 @@ public class NewtonCirclesDrawer : MonoBehaviour
 
     public GameObject prefab;
 
+    public Color color = Color.black;
+    public float lambda;
+    public float radius;
+
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < count; i++)
+        //ReinitCircleCanvas(760, 100, Color.blue);
+    }
+
+    public void ReinitCircleCanvas()
+    {
+        ClearFromCirlces();
+        Draw();
+    }
+
+    public void ReinitCircleCanvas(int lambda, int radius, Color color)
+    {
+        ClearFromCirlces();
+
+        this.color = color;
+        this.lambda = lambda;
+        this.radius = radius;
+
+        Draw();
+    }
+
+    public void Draw()
+    {
+        if (!IsDrawAllow())
+            return;
+
+        float mathPart = (radius / 100f) * (lambda / 1000000000f);
+        for (int i = 0; i < count; i++)
         {
-            AddCircle(i);
+            float innerMathPart = Mathf.Sqrt(mathPart * (i + 1)) * 10000;
+
+            AddCircle(innerMathPart);
         }
+    }
+
+    private bool IsDrawAllow()
+    {
+        return color != Color.black && lambda != 0 && radius != 0;
     }
 
     private void AddCircle(float radius)
     {
         var newCircle = Instantiate(prefab, transform);
-        DrawCircle.AddToObject(newCircle, radius, lineWidth);
+        DrawCircle.AddToObject(newCircle, radius, lineWidth, color);
     }
 
     private void ClearFromCirlces()
@@ -27,18 +64,6 @@ public class NewtonCirclesDrawer : MonoBehaviour
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
-        }
-    }
-
-    public void ReinitCircleCanvas(int lambda, int radius)
-    {
-        ClearFromCirlces();
-
-        float mathPart = (radius / 100f) * (lambda / 1000000000f);
-        Debug.Log("mathPart: " + mathPart);
-        for (int i = 0; i < count; i++)
-        {
-            AddCircle(mathPart * (i + 1));
         }
     }
 }

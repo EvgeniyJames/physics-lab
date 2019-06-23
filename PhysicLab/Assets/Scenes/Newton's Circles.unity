@@ -689,6 +689,7 @@ MonoBehaviour:
   stepLimit: 5
   interpolationStep: 0.3
   arrowsContainer: {fileID: 468203407}
+  NewtonCirclesDrawer: {fileID: 1258965814}
   textWidget: {fileID: 1436595714}
 --- !u!1 &312036383
 GameObject:
@@ -2010,6 +2011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowContainer: {fileID: 950572254}
   circlesContainer: {fileID: 886607095}
+  NewtonCirclesDrawer: {fileID: 1258965814}
   textLambda: {fileID: 1238659658}
 --- !u!1 &877003966
 GameObject:
@@ -2514,9 +2516,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a273d96bb83791c409442f40364e5d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineWidth: 5
+  lineWidth: 3
   count: 10
   prefab: {fileID: 1280034205497899016, guid: 9b41e8c53c95ad94faa79afabb6a724a, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  lambda: 0
+  radius: 0
 --- !u!1 &1287537180
 GameObject:
   m_ObjectHideFlags: 0

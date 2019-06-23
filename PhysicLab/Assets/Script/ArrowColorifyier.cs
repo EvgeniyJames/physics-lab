@@ -13,15 +13,18 @@ public class ArrowColorifyier : MonoBehaviour {
     public GameObject arrowContainer;
     public GameObject circlesContainer;
 
+    public NewtonCirclesDrawer NewtonCirclesDrawer;
+
     public Text textLambda;
 
     private ColorButtonParams[] paramsCache;
 
 	// Use this for initialization
 	void Start () {
+        Debug.Assert(NewtonCirclesDrawer, "NewtonCirclesDrawer of " + name + " is lost");
+        Debug.Assert(arrowContainer, "arrowContainer of " + name + " is lost");
+        Debug.Assert(circlesContainer, "circlesContainer of " + name + " is lost");
 
-        Debug.Assert(arrowContainer, "arrowContainer hasn't been init");
-        Debug.Assert(circlesContainer, "circlesContainer hasn't been init");
 
         paramsCache = new ColorButtonParams[transform.childCount];
 
@@ -71,6 +74,13 @@ public class ArrowColorifyier : MonoBehaviour {
             spriteRenderer.color = colorButtonParams.color;
 
             circlesContainer.transform.localScale = new Vector3(colorButtonParams.circlesScale, colorButtonParams.circlesScale, 1f);
+        }
+
+        if (NewtonCirclesDrawer)
+        {
+            NewtonCirclesDrawer.lambda = colorButtonParams.lambda;
+            NewtonCirclesDrawer.color = colorButtonParams.color;
+            NewtonCirclesDrawer.ReinitCircleCanvas();
         }
     }
 }

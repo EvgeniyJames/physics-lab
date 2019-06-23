@@ -2,7 +2,7 @@
 
 public static class GameObjectEx
 {
-    public static void DrawCircle(this GameObject container, float radius, float lineWidth)
+    public static void DrawCircle(this GameObject container, float radius, float lineWidth, Color color)
     {
         var segments = 360;
         var line = container.AddComponent<LineRenderer>();
@@ -10,7 +10,7 @@ public static class GameObjectEx
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
         line.positionCount = segments + 1;
-        line.material.color = Color.blue;
+        line.material.color = color;
 
         var pointCount = segments + 1; // add extra point to make startpoint and endpoint the same to close the circle
         var points = new Vector3[pointCount];

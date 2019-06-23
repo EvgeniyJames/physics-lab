@@ -5,6 +5,8 @@ public class DrawCircle : MonoBehaviour
     public float radius;
     public float lineWidth;
 
+    public Color color;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +19,15 @@ public class DrawCircle : MonoBehaviour
 
     public void Init()
     {
-        gameObject.DrawCircle(radius, lineWidth);
+        gameObject.DrawCircle(radius, lineWidth, color);
     }
 
-    public static void AddToObject(GameObject where, float radius, float lineWidth)
+    public static void AddToObject(GameObject where, float radius, float lineWidth, Color color)
     {
         DrawCircle drawCircle = where.AddComponent<DrawCircle>();
         drawCircle.radius = radius;
         drawCircle.lineWidth = lineWidth;
+        drawCircle.color = color;
         drawCircle.Init();
     }
 }
