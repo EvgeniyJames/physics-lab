@@ -6,12 +6,7 @@ public class SceneNavigator : MonoBehaviour {
 
     public string sceneName;
 
-	// Use this for initialization
-	void Start () {
-        GetComponent<Button>().onClick.AddListener(OnNewScenePressed);
-	}
-
-    void OnNewScenePressed()
+    public void OnNewScenePressed()
     {
         SceneManager.LoadScene(sceneName);
     }
