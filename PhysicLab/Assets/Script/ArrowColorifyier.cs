@@ -11,7 +11,6 @@ public class ArrowColorifyier : MonoBehaviour {
     }
 
     public GameObject arrowContainer;
-    public GameObject circlesContainer;
 
     public NewtonCirclesDrawer NewtonCirclesDrawer;
 
@@ -23,7 +22,6 @@ public class ArrowColorifyier : MonoBehaviour {
 	void Start () {
         Debug.Assert(NewtonCirclesDrawer, "NewtonCirclesDrawer of " + name + " is lost");
         Debug.Assert(arrowContainer, "arrowContainer of " + name + " is lost");
-        Debug.Assert(circlesContainer, "circlesContainer of " + name + " is lost");
 
 
         paramsCache = new ColorButtonParams[transform.childCount];
@@ -67,14 +65,6 @@ public class ArrowColorifyier : MonoBehaviour {
 
         if (textLambda)
             textLambda.text = "" + colorButtonParams.lambda;
-
-        if(circlesContainer)
-        {
-            SpriteRenderer spriteRenderer = circlesContainer.GetComponent<SpriteRenderer>();
-            spriteRenderer.color = colorButtonParams.color;
-
-            circlesContainer.transform.localScale = new Vector3(colorButtonParams.circlesScale, colorButtonParams.circlesScale, 1f);
-        }
 
         if (NewtonCirclesDrawer)
         {
