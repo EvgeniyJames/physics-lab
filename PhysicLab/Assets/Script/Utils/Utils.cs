@@ -26,4 +26,20 @@ public static class GameObjectEx
 
         line.SetPositions(points);
     }
+
+    public static void DrawRuler(this GameObject container, int counter, Color color)
+    {
+        //container.AddComponent<LineRenderer>();
+        LineRenderer lr = container.GetComponent<LineRenderer>();
+        lr.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        lr.startColor = color;
+        lr.endColor = color;
+        lr.startWidth = 0.1f;
+        lr.endWidth = 0.1f;
+
+        Vector3 newPos = new Vector3(10 * counter, 200f, 0);
+
+        lr.SetPosition(0, newPos);
+        lr.SetPosition(1, newPos);
+    }
 }
