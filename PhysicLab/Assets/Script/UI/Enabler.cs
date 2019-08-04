@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -10,12 +8,12 @@ public class Enabler : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnEnable);
+        GetComponent<Button>().onClick.AddListener(OnEnableItem);
     }
 
-    public void OnEnable()
+    public void OnEnableItem()
     {
         if (toEnable)
-            toEnable.SetActive(!toEnable.activeSelf);
+            toEnable.SetActive(!toEnable.active);
     }
 }
