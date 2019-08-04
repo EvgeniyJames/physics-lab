@@ -4041,8 +4041,8 @@ GameObject:
   - component: {fileID: 1912672227}
   - component: {fileID: 1912672228}
   - component: {fileID: 1912672230}
-  - component: {fileID: 1912672229}
   - component: {fileID: 1912672231}
+  - component: {fileID: 1912672229}
   m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
@@ -4091,7 +4091,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1912672226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d919f0b47bd5ede499761946b372ec46, type: 3}
+  m_Script: {fileID: 11500000, guid: f44b11313b37ce54b872cd42c1f95bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Pagination: {fileID: 0}
